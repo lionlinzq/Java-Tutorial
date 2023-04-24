@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.CartItemsMapper">
+<mapper namespace="com.lzq.demo.mapper.CartItemsMapper">
 
     <resultMap id="BaseResultMap" type="com.lzq.demo.domain.CartItems">
             <id property="cartItemId" column="cart_item_id" jdbcType="INTEGER"/>

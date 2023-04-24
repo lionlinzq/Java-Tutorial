@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.FavoritesMapper">
+<mapper namespace="com.lzq.demo.mapper.FavoritesMapper">
 
     <resultMap id="BaseResultMap" type="com.lzq.demo.domain.Favorites">
             <id property="favoriteId" column="favorite_id" jdbcType="INTEGER"/>

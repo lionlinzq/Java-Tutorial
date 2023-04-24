@@ -3,7 +3,7 @@ spring:
     # 指定MySQL JDBC驱动
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 指定MySQL连接URL，以及设置编码和时区
-    url: jdbc:mysql://localhost:3306/lion_code?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://43.139.111.55:3306/lion_code?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     # 指定MySQL用户名
     username: root
     # 指定MySQL密码
@@ -12,7 +12,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       # 指定连接池初始化大小
-      initial-size: 5
+      initial-size: 1
       # 指定连接池最小空闲连接数
       min-idle: 5
       # 指定连接池最大连接数
@@ -34,10 +34,23 @@ spring:
       # 配置归还连接时是否进行测试，如果为true，则归还连接时都会测试连接是否有效
       test-on-return: false
       # 指定德鲁伊的过滤器，用于监控、防火墙、日志等等
-#      filters: stat,wall,logback
+      filters: stat,wall,logback
+  management:
+    endpoints:
+      web:
+        base-path: /actuator
+    startup:
+      report-location: report.txt
+
+
+logging:
+  level:
+    root: INFO
 
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 server:
   port: 8080 # 服务器监听端口号
@@ -60,16 +73,14 @@ server:
       enabled: true # 是否启用访问日志
       prefix: access_log # 访问日志文件名前缀
       suffix: .log # 访问日志文件名后缀
-      dir: /var/log/undertow/ # 访问日志文件保存目录
+      dir: ../../log/undertow/ # 访问日志文件保存目录
       rotate: on # 访问日志文件轮转方式（按天、按小时、按分钟等）
     http-listeners: # HTTP监听器配置
-      -
-        socket-binding: http # 监听器使用的socket-binding名称
+      - socket-binding: http # 监听器使用的socket-binding名称
         redirect-socket: https # 是否启用重定向到HTTPS
         enable-http2: true # 是否启用HTTP/2
     https-listeners: # HTTPS监听器配置
-      -
-        socket-binding: https # 监听器使用的socket-binding名称
+      - socket-binding: https # 监听器使用的socket-binding名称
         security-realm: SSLRealm # 安全领域名称
         verify-client: true # 是否启用客户端证书验证
         enable-http2: true # 是否启用HTTP/2
