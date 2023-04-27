@@ -1,5 +1,7 @@
 package com.lzq.demo.service.impl;
 
+import com.github.javafaker.Faker;
+import com.github.jsonzou.jmockdata.JMockData;
 import com.lzq.demo.domain.CartItems;
 import com.lzq.demo.service.CartItemsService;
 import com.lzq.demo.utils.TestUtil;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.Locale;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -51,6 +54,15 @@ class CartItemsServiceImplTest {
     public void testGetCartItems(){
         CartItems items = TestUtil.generate(CartItems.class);
         cartItemsService.save(items);
+    }
+
+    @Test
+    public void setCartItemsServiceImpl( ) {
+        CartItems cartItems = JMockData.mock(CartItems.class);
+        System.out.println(cartItems.toString());
+        CartItems cartItems1 = new CartItems();
+        cartItems1.setCartItemId(1231);
+        cartItemsService.save(cartItems1);
         System.out.println(cartItemsService.list());
     }
 }
