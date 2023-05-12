@@ -34,13 +34,14 @@ spring:
       # 配置归还连接时是否进行测试，如果为true，则归还连接时都会测试连接是否有效
       test-on-return: false
       # 指定德鲁伊的过滤器，用于监控、防火墙、日志等等
-      filters: stat,wall,logback
-  management:
-    endpoints:
-      web:
-        base-path: /actuator
-    startup:
-      report-location: report.txt
+      filters: stat,wall,logback,stat-view-servlet
+      # 配置监控页面的登录信息
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
+        reset-enable: true
+        enabled: true
+        url-pattern: /druid/*
 
 
 logging:
@@ -94,8 +95,4 @@ server:
         persistent-store: /var/lib/undertow/sessions # Session持久化存储路径
         cookie-name: JSESSIONID # Session ID在Cookie中的名称
         timeout: 30m # Session超时时间
-      jsp: # JSP配置
-        development: true # 是否启用JSP开发模式
-        check-interval: 0 # JSP检查间隔时间（秒）
-        modification-test-interval: 4 # JSP修改检查间隔时间（秒）
-        reload-on-missing-class: true # 是否在缺少类文件时重新加载JSP页面
+
