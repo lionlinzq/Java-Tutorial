@@ -3,11 +3,11 @@ spring:
     # 指定MySQL JDBC驱动
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 指定MySQL连接URL，以及设置编码和时区
-    url: jdbc:mysql://43.139.111.55:3306/lion_code?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://43.139.111.55:6666/lion?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     # 指定MySQL用户名
     username: root
     # 指定MySQL密码
-    password: root
+    password: lion123
     # 指定德鲁伊数据源类型
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -35,12 +35,12 @@ spring:
       test-on-return: false
       # 指定德鲁伊的过滤器，用于监控、防火墙、日志等等
       filters: stat,wall,logback
-  management:
-    endpoints:
-      web:
-        base-path: /actuator
-    startup:
-      report-location: report.txt
+#  management:
+#    endpoints:
+#      web:
+#        base-path: /actuator
+#    startup:
+#      report-location: report.txt
 
 
 logging:

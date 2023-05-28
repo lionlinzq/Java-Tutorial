@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzq.demo.mapper.PlReleaseRangeMapper">
+
+    <resultMap id="BaseResultMap" type="com.lzq.demo.domain.PlReleaseRange">
+            <id property="rangeId" column="range_id" jdbcType="BIGINT"/>
+            <result property="questionnaireId" column="questionnaire_id" jdbcType="BIGINT"/>
+            <result property="target" column="target" jdbcType="INTEGER"/>
+            <result property="dimension" column="dimension" jdbcType="BIGINT"/>
+            <result property="orgstructid" column="orgstructid" jdbcType="BIGINT"/>
+            <result property="positionid" column="positionid" jdbcType="BIGINT"/>
+            <result property="customerType" column="customer_type" jdbcType="VARCHAR"/>
+            <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+            <result property="updatetime" column="updatetime" jdbcType="TIMESTAMP"/>
+            <result property="createopname" column="createopname" jdbcType="VARCHAR"/>
+            <result property="updateopname" column="updateopname" jdbcType="VARCHAR"/>
+            <result property="userid" column="userid" jdbcType="VARCHAR"/>
+            <result property="ruleId" column="rule_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        range_id,questionnaire_id,target,
+        dimension,orgstructid,positionid,
+        customer_type,createtime,updatetime,
+        createopname,updateopname,userid,
+        rule_id
+    </sql>
+</mapper>
