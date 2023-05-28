@@ -172,6 +172,8 @@ public class ruleTest {
         Collections.sort(rules);
         System.out.println(rules);
 
+        // 用户查询待填写问卷
+
         int[] arr = new int[]{1, 2, 4, 3};
         Arrays.sort(arr);
         StringBuffer sql = new StringBuffer("select * from pl_form where 1 = 1 ");
@@ -179,6 +181,18 @@ public class ruleTest {
         for (int i = 0; i < arr.length; i++) {
             if ((dimension = RuleEnum.getDimensionByCode(arr[i])) != null) {
                 sql.append(String.format(" and %s in (%s)",dimension,new String("1,2,3")));
+            }
+        }
+        System.out.println(sql.toString());
+
+        // 调度查询待填写问卷
+
+
+        StringBuffer sql1 = new StringBuffer("select * from pl_form where 1 = 1 ");
+        String dimension1;
+        for (int i = 0; i < arr.length; i++) {
+            if ((dimension1 = RuleEnum.getDimensionByCode(arr[i])) != null) {
+                sql.append(String.format(" and %s in (%s)",dimension1,new String("1,2,3")));
             }
         }
         System.out.println(sql.toString());

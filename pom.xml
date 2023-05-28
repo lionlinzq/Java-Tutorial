@@ -11,7 +11,7 @@
     <modules>
         <module>Mybatis-Plus-demo</module>
         <module>spring-ioc</module>
-        <module>xxl-job-demo</module>
+        <module>xxljob-demo</module>
     </modules>
 
     <properties>
