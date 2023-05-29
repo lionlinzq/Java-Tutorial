@@ -3,11 +3,11 @@ spring:
     # 指定MySQL JDBC驱动
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 指定MySQL连接URL，以及设置编码和时区
-    url: jdbc:mysql://43.139.111.55:3306/lion_code?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://43.139.111.55:6666/lion?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     # 指定MySQL用户名
     username: root
     # 指定MySQL密码
-    password: root
+    password: lion123
     # 指定德鲁伊数据源类型
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -34,14 +34,13 @@ spring:
       # 配置归还连接时是否进行测试，如果为true，则归还连接时都会测试连接是否有效
       test-on-return: false
       # 指定德鲁伊的过滤器，用于监控、防火墙、日志等等
-      filters: stat,wall,logback,stat-view-servlet
-      # 配置监控页面的登录信息
-      stat-view-servlet:
-        login-username: admin
-        login-password: admin
-        reset-enable: true
-        enabled: true
-        url-pattern: /druid/*
+      filters: stat,wall,logback
+#  management:
+#    endpoints:
+#      web:
+#        base-path: /actuator
+#    startup:
+#      report-location: report.txt
 
 
 logging:
@@ -95,4 +94,8 @@ server:
         persistent-store: /var/lib/undertow/sessions # Session持久化存储路径
         cookie-name: JSESSIONID # Session ID在Cookie中的名称
         timeout: 30m # Session超时时间
-
+      jsp: # JSP配置
+        development: true # 是否启用JSP开发模式
+        check-interval: 0 # JSP检查间隔时间（秒）
+        modification-test-interval: 4 # JSP修改检查间隔时间（秒）
+        reload-on-missing-class: true # 是否在缺少类文件时重新加载JSP页面

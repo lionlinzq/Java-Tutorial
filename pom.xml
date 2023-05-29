@@ -10,6 +10,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>Mybatis-Plus-demo</module>
+        <module>spring-ioc</module>
+        <module>xxljob-demo</module>
     </modules>
 
     <properties>
