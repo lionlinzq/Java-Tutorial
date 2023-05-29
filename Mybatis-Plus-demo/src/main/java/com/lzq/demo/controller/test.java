@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,9 @@ public class test {
     @ResponseBody
     public List<Map<String, Object>> test(){
 
-        List<Map<String, Object>> select = mapper.select();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("orgs", new String[]{"组织1","组织2"});
+        List<Map<String, Object>> select = mapper.selectALL(map);
         return select;
     }
 

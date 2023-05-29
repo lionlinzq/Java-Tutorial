@@ -21,6 +21,7 @@ public interface PlReleaseRangeMapper extends BaseMapper<PlReleaseRange> {
             "join pl_release_range prr on rule.rule_id = prr.rule_id;")
     List<Map<String,Object>> select();
 
+    List selectALL(Map map);
 }
 
 

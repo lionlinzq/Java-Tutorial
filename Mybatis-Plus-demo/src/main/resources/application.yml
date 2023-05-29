@@ -11,36 +11,28 @@ spring:
     # 指定德鲁伊数据源类型
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      # 指定连接池初始化大小
-      initial-size: 1
-      # 指定连接池最小空闲连接数
-      min-idle: 5
-      # 指定连接池最大连接数
-      max-active: 20
-      # 指定获取连接时的最大等待时间，单位毫秒
-      max-wait: 60000
-      # 配置检测需要关闭的空闲连接时间，单位毫秒
-      time-between-eviction-runs-millis: 60000
-      # 配置一个连接在池中最小生存的时间，单位毫秒
-      min-evictable-idle-time-millis: 300000
-      # 指定验证查询语句，用于测试连接是否有效
-      validation-query: SELECT 1
-      # 指定验证查询超时时间，单位毫秒
-      validation-query-timeout: 3000
-      # 配置连接空闲时是否进行测试，如果为true，则空闲连接将被测试
-      test-while-idle: true
-      # 配置获取连接时是否进行测试，如果为true，则每次获取连接时都会测试连接是否有效
-      test-on-borrow: false
-      # 配置归还连接时是否进行测试，如果为true，则归还连接时都会测试连接是否有效
-      test-on-return: false
-      # 指定德鲁伊的过滤器，用于监控、防火墙、日志等等
-      filters: stat,wall,logback
-#  management:
-#    endpoints:
-#      web:
-#        base-path: /actuator
-#    startup:
-#      report-location: report.txt
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,slf4j
+      # 初始化大小，最小，最大
+      initialSize: 1
+      minIdle: 5
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      useGlobalDataSourceStat: true
 
 
 logging:
