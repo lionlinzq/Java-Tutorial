@@ -5,26 +5,54 @@
 <mapper namespace="com.lzq.demo.mapper.PlReleaseRangeMapper">
 
     <resultMap id="BaseResultMap" type="com.lzq.demo.domain.PlReleaseRange">
-            <id property="rangeId" column="range_id" jdbcType="BIGINT"/>
-            <result property="questionnaireId" column="questionnaire_id" jdbcType="BIGINT"/>
-            <result property="target" column="target" jdbcType="INTEGER"/>
-            <result property="dimension" column="dimension" jdbcType="BIGINT"/>
-            <result property="orgstructid" column="orgstructid" jdbcType="BIGINT"/>
-            <result property="positionid" column="positionid" jdbcType="BIGINT"/>
-            <result property="customerType" column="customer_type" jdbcType="VARCHAR"/>
-            <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
-            <result property="updatetime" column="updatetime" jdbcType="TIMESTAMP"/>
-            <result property="createopname" column="createopname" jdbcType="VARCHAR"/>
-            <result property="updateopname" column="updateopname" jdbcType="VARCHAR"/>
-            <result property="userid" column="userid" jdbcType="VARCHAR"/>
-            <result property="ruleId" column="rule_id" jdbcType="VARCHAR"/>
+        <id property="rangeId" column="range_id" jdbcType="BIGINT"/>
+        <result property="questionnaireId" column="questionnaire_id" jdbcType="BIGINT"/>
+        <result property="target" column="target" jdbcType="INTEGER"/>
+        <result property="dimension" column="dimension" jdbcType="BIGINT"/>
+        <result property="orgstructid" column="orgstructid" jdbcType="BIGINT"/>
+        <result property="positionid" column="positionid" jdbcType="BIGINT"/>
+        <result property="customerType" column="customer_type" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="updatetime" column="updatetime" jdbcType="TIMESTAMP"/>
+        <result property="createopname" column="createopname" jdbcType="VARCHAR"/>
+        <result property="updateopname" column="updateopname" jdbcType="VARCHAR"/>
+        <result property="userid" column="userid" jdbcType="VARCHAR"/>
+        <result property="ruleId" column="rule_id" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        range_id,questionnaire_id,target,
+        range_id
+        ,questionnaire_id,target,
         dimension,orgstructid,positionid,
         customer_type,createtime,updatetime,
         createopname,updateopname,userid,
         rule_id
     </sql>
+
+    <select id="selectALL" resultType="java.util.List">
+        SELECT * FROM pl_release_range
+        <where>
+            <choose>
+                <when test="orgs != null and orgs.length > 0">
+                    <foreach collection="orgs" item="org" separator=" OR ">
+                        userid LIKE CONCAT('%', #{org}, '%')
+                    </foreach>
+                </when>
+                <otherwise>
+                    AND 1=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+    <select id="selectByUserIds" parameterType="map">
+        SELECT * FROM pl_release_range
+        <where>
+            <foreach collection="userIds" item="userId" open="AND userid LIKE ANY (" separator="," close=")">
+                #{'%' + userId + '%'}
+            </foreach>
+        </where>
+    </select>
+
 </mapper>
