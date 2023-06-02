@@ -10,13 +10,12 @@ import com.lzq.demo.domain.ReleaseRule;
 import com.lzq.demo.domain.RuleDTO;
 import com.lzq.demo.domain.rule;
 import com.lzq.demo.mapper.PlReleaseRangeMapper;
-import com.lzq.demo.service.PlReleaseRangeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @SpringBootTest
 public class ruleTest {
@@ -196,5 +195,11 @@ public class ruleTest {
             }
         }
         System.out.println(sql.toString());
+    }
+
+    @Scheduled(cron = "* * * * * * ")
+    @Test
+    public void testSchdule() {
+        System.out.println(System.currentTimeMillis());
     }
 }

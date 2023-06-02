@@ -2,9 +2,12 @@ package com.lzq.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lzq.demo.domain.PlReleaseRange;
-import com.lzq.demo.service.PlReleaseRangeService;
 import com.lzq.demo.mapper.PlReleaseRangeMapper;
+import com.lzq.demo.service.PlReleaseRangeService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
 * @author lin
@@ -15,6 +18,12 @@ import org.springframework.stereotype.Service;
 public class PlReleaseRangeServiceImpl extends ServiceImpl<PlReleaseRangeMapper, PlReleaseRange>
     implements PlReleaseRangeService{
 
+    @Scheduled(cron = "*/5 * * * * *")
+    @Override
+    public void testSchdule() {
+        Date date = new Date();
+        System.out.println(System.currentTimeMillis());
+    }
 }
 
 

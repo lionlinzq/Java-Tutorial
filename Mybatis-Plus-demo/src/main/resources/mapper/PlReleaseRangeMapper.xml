@@ -30,7 +30,14 @@
     </sql>
 
     <select id="selectALL" resultType="java.util.List">
-        SELECT * FROM pl_release_range
+        SELECT * FROM pl_release_range range
+            <choose>
+                <when test="orgs != null">
+                    join rule on range.id = rule.rangeid
+                </when>
+            </choose>
+
+
         <where>
             <choose>
                 <when test="orgs != null and orgs.length > 0">

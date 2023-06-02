@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface PlReleaseRangeService extends IService<PlReleaseRange> {
 
 
+   void testSchdule();
+
 }
