@@ -8,10 +8,12 @@
     <artifactId>Java-Tutorial</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>Mybatis-Plus-demo</module>
         <module>spring-ioc</module>
-        <module>xxljob-demo</module>
+        <module>Algorithm</module>
+        <module>GrammarExercise</module>
     </modules>
 
     <properties>
