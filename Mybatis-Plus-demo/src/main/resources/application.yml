@@ -1,38 +1,38 @@
 spring:
   datasource:
-    # 指定MySQL JDBC驱动
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    # 指定MySQL连接URL，以及设置编码和时区
-    url: jdbc:mysql://43.139.111.55:6666/lion?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
-    # 指定MySQL用户名
-    username: root
-    # 指定MySQL密码
-    password: lion123
-    # 指定德鲁伊数据源类型
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-      filters: stat,wall,slf4j
-      # 初始化大小，最小，最大
-      initialSize: 1
-      minIdle: 5
-      maxActive: 20
-      # 配置获取连接等待超时的时间
-      maxWait: 60000
-      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-      timeBetweenEvictionRunsMillis: 60000
-      # 配置一个连接在池中最小生存的时间，单位是毫秒
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: SELECT 1
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      # 打开PSCache，并且指定每个连接上PSCache的大小
-      poolPreparedStatements: true
-      maxOpenPreparedStatements: 20
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-      # 合并多个DruidDataSource的监控数据
-      useGlobalDataSourceStat: true
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://43.139.111.55:6666/lion?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+          username: root
+          password: lion123
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          # 指定德鲁伊数据源类型
+          type: com.alibaba.druid.pool.DruidDataSource
+          druid:
+            # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+            filters: stat,wall,slf4j
+            # 初始化大小，最小，最大
+            initialSize: 1
+            minIdle: 5
+            maxActive: 20
+            # 配置获取连接等待超时的时间
+            maxWait: 60000
+            # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+            timeBetweenEvictionRunsMillis: 60000
+            # 配置一个连接在池中最小生存的时间，单位是毫秒
+            minEvictableIdleTimeMillis: 300000
+            validationQuery: SELECT 1
+            testWhileIdle: true
+            testOnBorrow: false
+            testOnReturn: false
+            # 打开PSCache，并且指定每个连接上PSCache的大小
+            poolPreparedStatements: true
+            maxOpenPreparedStatements: 20
+            connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+            # 合并多个DruidDataSource的监控数据
+            useGlobalDataSourceStat: true
 
 
 logging:
