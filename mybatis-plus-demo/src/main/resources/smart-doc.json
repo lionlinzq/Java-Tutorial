@@ -1,0 +1,6 @@
+{
+  "outPath": "./doc/",
+  "createDebugPage": true,
+  "allInOne": true,
+  "coverOld": true
+}
