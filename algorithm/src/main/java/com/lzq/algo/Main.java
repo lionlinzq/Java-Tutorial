@@ -32,4 +32,14 @@ public class Main {
         }
         return res;
     }
+
+    private static void test(int[] nums) {
+        Long id = null;
+        changeID(id);
+        System.out.println(id);
+    }
+
+    private static void changeID(Long id) {
+        id = 8888L;
+    }
 }

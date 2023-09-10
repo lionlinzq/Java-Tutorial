@@ -1,4 +1,4 @@
-package com.lzq.algo.list;
+package com.lzq.algo.LinkedList;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,16 +9,16 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2023/7/31 15:01
  */
 @Slf4j
-public class ListTopic {
+public class LinkedListTopic {
     public static void main(String[] args) {
-        ListTopic listTopic = new ListTopic();
+        LinkedListTopic linkedListTopic = new LinkedListTopic();
 
         ListNode e = new ListNode(5, null);
         ListNode d = new ListNode(4, e);
         ListNode c = new ListNode(3, d);
         ListNode b = new ListNode(2, c);
         ListNode a = new ListNode(1, b);
-        ListNode reverseList = listTopic.reverseList2(a);
+        ListNode reverseList = linkedListTopic.reverseList2(a);
         System.out.println(reverseList);
     }
 

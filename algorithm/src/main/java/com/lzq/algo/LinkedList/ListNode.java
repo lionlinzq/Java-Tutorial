@@ -1,4 +1,4 @@
-package com.lzq.algo.list;
+package com.lzq.algo.LinkedList;
 
 /**
  * @author lionlinzq
