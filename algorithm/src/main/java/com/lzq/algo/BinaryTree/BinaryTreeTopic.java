@@ -46,6 +46,7 @@ public class BinaryTreeTopic {
     /**
      * 二叉树前序遍历
      * 递归实现
+     *
      * @param root 根部
      * @return {@link List}<{@link Integer}>
      */
@@ -151,6 +152,7 @@ public class BinaryTreeTopic {
      * 前序遍历时 中左右
      * 后续遍历时 左右中
      * 所以也可以 中右左再对结果取反
+     *
      * @param root 根部
      * @return {@link List}<{@link Integer}>
      */
@@ -174,4 +176,82 @@ public class BinaryTreeTopic {
         Collections.reverse(list);
         return list;
     }
+
+    /**
+     * 层序遍历
+     *
+     * @param root 根部
+     * @return {@link List}<{@link List}<{@link Integer}>>
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = queue.poll();
+                level.add(cur.val);
+                if (cur.left != null) {
+                    queue.add(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.add(cur.right);
+                }
+            }
+            list.add(level);
+        }
+        return list;
+    }
+
+    /**
+     * 递归层序遍历
+     *
+     * @param root 根部
+     * @return {@link List}<{@link List}<{@link Integer}>>
+     */
+    public List<List<Integer>> levelOrderByRecursion(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        levelDfs(root, list, 0);
+        return list;
+    }
+
+
+    /**
+     * 层次遍历DFS
+     *
+     * @param root   根部
+     * @param result 结果
+     * @param depth  深度
+     */
+    public void levelDfs(TreeNode root, List<List<Integer>> result, Integer depth) {
+        if (root == null) {
+            return;
+        }
+        if (result.size() == depth) {
+            result.add(new ArrayList<Integer>());
+        }
+
+        result.get(depth).add(root.val);
+        levelDfs(root.left, result, depth);
+        levelDfs(root.right, result, depth);
+    }
+
+    /**
+     * 从底部层序遍历上来
+     *
+     * @param root 根部
+     * @return {@link List}<{@link List}<{@link Integer}>>
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+
+        return list;
+    }
+
+
 }
