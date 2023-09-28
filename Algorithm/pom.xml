@@ -9,14 +9,15 @@
         <version>1.0.0</version>
     </parent>
 
-    <groupId>com.lzq.grammer</groupId>
-    <artifactId>grammar</artifactId>
+    <groupId>com.lzq.algo</groupId>
+    <artifactId>Algorithm</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -38,6 +39,10 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

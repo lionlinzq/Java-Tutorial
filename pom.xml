@@ -11,11 +11,11 @@
 
     <modules>
         <module>mybatis-plus-demo</module>
-        <module>spring-ioc</module>
-        <module>algorithm</module>
-        <module>grammar</module>
-        <module>design-patterns</module>
-        <module>netty-demo</module>
+        <module>Spring-IOC</module>
+        <module>Algorithm</module>
+        <module>Grammar</module>
+        <module>DesignPatterns</module>
+        <module>NettyDemo</module>
     </modules>
 
     <properties>

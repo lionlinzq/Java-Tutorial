@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(halveArray(new int[]{5, 19, 8, 1}));
     }
+    
 
     public static int halveArray(int[] nums) {
         int res = 0, sum = 0;

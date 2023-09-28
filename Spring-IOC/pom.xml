@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.lionlinzq</groupId>
-    <artifactId>spring-ioc</artifactId>
+    <artifactId>Spring-IOC</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
