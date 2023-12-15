@@ -1,7 +1,5 @@
 package com.lzq.demo.thread;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutorService;
@@ -12,8 +10,7 @@ import java.util.concurrent.Executors;
 public class test {
 
 
-
-    @Scheduled(cron = "*/10 * * * * *")
+    // @Scheduled(cron = "*/10 * * * * *")
     public void test1() throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(8);
         for (int i = 0; i < 10; i++) {
